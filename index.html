@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://*.supabase.co https://api.pwnedpasswords.com; base-uri 'none'; form-action 'self'">
+  <title>Ton espace et Claude</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main aria-live="polite">
+    <h1>Ton espace <span data-app-name></span> et Claude</h1>
+
+    <section id="loading">
+      <p>Un instant…</p>
+    </section>
+
+    <section id="signed-out" hidden>
+      <p>Ici, tu vois les applications qui ont accès à ton espace, tu peux leur retirer cet accès et changer ton mot de
+        passe. Pour autoriser Claude, ajoute le connecteur dans Claude : cette page s'ouvre alors toute seule.</p>
+      <p id="login-error" class="warning" role="alert" hidden></p>
+      <form id="sign-in-form">
+        <label for="email">Adresse e-mail</label>
+        <input id="email" type="email" autocomplete="username" required>
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <label class="check"><input type="checkbox" data-shows="password"> Afficher le mot de passe</label>
+        <button id="sign-in" class="primary" type="submit">Se connecter</button>
+      </form>
+      <p class="note">Mot de passe oublié : aucun e-mail n'est envoyé. Demande à l'administrateur de l'app de le
+        changer.</p>
+    </section>
+
+    <section id="signed-in" hidden>
+      <p>Connecté : <strong id="account"></strong></p>
+      <h2>Applications autorisées</h2>
+      <ul id="grants" class="grants"></ul>
+      <p id="grants-empty" class="note" hidden>Aucune application n'a accès à ton espace.</p>
+
+      <h2>Changer mon mot de passe</h2>
+      <p class="warning">Changer ton mot de passe déconnecte aussi Claude : il faudra ensuite reconnecter le connecteur
+        dans Claude (Personnaliser → Connecteurs → <span data-app-name></span> → Connecter).</p>
+      <form id="password-form">
+        <input type="email" id="password-username" autocomplete="username" hidden>
+        <label for="current-password">Mot de passe actuel</label>
+        <input id="current-password" type="password" autocomplete="current-password" required>
+        <label for="new-password">Nouveau mot de passe</label>
+        <input id="new-password" type="password" autocomplete="new-password" minlength="15" required>
+        <p class="note">Au moins 15 caractères, sans autre règle : une phrase de quelques mots convient. Aucun e-mail ne
+          permet de le retrouver : en cas d'oubli, demande à l'administrateur de l'app.</p>
+        <label class="check"><input type="checkbox" data-shows="new-password"> Afficher le mot de passe</label>
+        <button id="save-password" type="submit">Enregistrer le mot de passe</button>
+      </form>
+      <p id="password-status" class="note" role="status"></p>
+
+      <p><button id="signout" class="link" type="button">Se déconnecter de cette page</button></p>
+    </section>
+
+    <section id="error" hidden>
+      <p id="error-text"></p>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="vendor/supabase.js"></script>
+  <script src="common.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

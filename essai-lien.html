@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; base-uri 'none'">
+  <title>Essai : ouvrir Claude avec une phrase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Ouvrir Claude avec une phrase</h1>
+    <p>Essai de l'étape 1, à faire sur le téléphone. Touche chaque bouton, puis reviens ici avec la touche Retour.
+      Pour chacun, note : l'app Claude s'est-elle ouverte ? une nouvelle conversation ? la phrase
+      « teste l'accès » déjà écrite ? envoyée toute seule ?</p>
+    <ol class="tests">
+      <li>
+        <a class="button primary" href="https://claude.ai/new?q=teste%20l%27acc%C3%A8s">1. Lien web claude.ai</a>
+      </li>
+      <li>
+        <a class="button primary" href="claude://claude.ai/new?q=teste%20l%27acc%C3%A8s">2. Lien claude://</a>
+      </li>
+      <li>
+        <a class="button primary" href="intent://claude.ai/new?q=teste%20l%27acc%C3%A8s#Intent;scheme=https;package=com.anthropic.claude;end">3. Comme le fera l'app (lien web, forcé vers l'app Claude)</a>
+      </li>
+    </ol>
+  </main>
+</body>
+</html>
